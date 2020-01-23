@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Sidebar from '../Sidebar/Sidebar';
 import Container from '../Container/Container';
+import Router from '../../router';
 
 const Layout = styled.div`
     display: flex;
@@ -10,7 +11,9 @@ const Layout = styled.div`
 const Default = () => (
     <Layout>
         <Sidebar />
-        <Container>right panel</Container>
+        <Container>
+            <Router />
+        </Container>
     </Layout>
 )
 

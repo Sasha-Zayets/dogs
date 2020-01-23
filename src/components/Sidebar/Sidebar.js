@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logo from '../Logo/Logo';
+import Navigation from '../Navigation/Navigation';
 
 const Component = styled.div`
     padding: 20px;
@@ -11,6 +12,7 @@ const Component = styled.div`
 const Sidebar = () => (
     <Component>
         <Logo />
+        <Navigation />
     </Component>
 )
 
