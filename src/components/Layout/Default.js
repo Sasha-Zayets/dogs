@@ -6,6 +6,7 @@ import Router from '../../router';
 
 const Layout = styled.div`
     display: flex;
+    height: 100%;
 `;
 
 const Default = () => (

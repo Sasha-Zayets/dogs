@@ -5,6 +5,7 @@ import Navigation from '../Navigation/Navigation';
 
 const Component = styled.div`
     padding: 20px;
+    height: 100%;
     width: 25%;
     background-color: #d6d6d6;
 `;

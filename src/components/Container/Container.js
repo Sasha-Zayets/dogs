@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Content = styled.div`
     padding: 50px 40px;
+    height: 100%;
     width: 80%;
     background-color: #f7f7f7;
 `;

@@ -1,7 +1,12 @@
 import React, { Fragment } from 'react';
+import styled from 'styled-components';
 import Title from '../components/Title/Title';
 import ListBreeds from '../components/ListBreeds/ListBreeds';
+import Input from '../components/Input/Input';
 
+const SearchField = styled(Input)`
+    margin-bottom: 20px;
+`;
 
 class BreedsList extends React.Component {
     state = {
@@ -41,12 +46,10 @@ class BreedsList extends React.Component {
         return (
             <Fragment>
                 <Title>All breeds list</Title>
-                <div style={ {marginBottom: '10px'} }>
-                    <input 
-                        value={ search } 
-                        placeholder="Search"
-                        onChange={ this.searchBreeds } />
-                </div>
+                <SearchField
+                    value={ search } 
+                    placeholder="Search"
+                    onChange={ this.searchBreeds } />
                 <ListBreeds lists={ showList } />
             </Fragment>
         )
