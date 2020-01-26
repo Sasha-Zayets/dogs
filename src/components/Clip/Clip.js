@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import propTypes from 'prop-types';
 
 const Component = styled.div`
     width: fit-content;
@@ -18,5 +18,14 @@ const Component = styled.div`
 const Clip = ({ className, children }) => (
     <Component className={ className }>{ children }</Component>
 )
+
+Clip.propTypes = {
+    className: propTypes.string,
+    children: propTypes.oneOfType([
+        propTypes.element.isRequired,
+        propTypes.string.isRequired,
+        propTypes.number.isRequired
+    ])
+}
 
 export default Clip;

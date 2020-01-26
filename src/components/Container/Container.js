@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
 
 const Content = styled.div`
     padding: 50px 40px;
@@ -13,5 +14,9 @@ const Container = ({ children }) => (
         { children }
     </Content>
 )
+
+Container.propTypes = {
+    children: propTypes.element
+}
 
 export default Container;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
 
 const Field = styled.input`
     height: 40px;
@@ -21,5 +22,12 @@ const Input = ({ className, value, placeholder, onChange }) => (
         placeholder={ placeholder } 
         onChange={ onChange } />
 )
+
+Input.propTypes = {
+    className: propTypes.string,
+    value: propTypes.oneOfType([propTypes.string, propTypes.number]),
+    placeholder: propTypes.string,
+    onChange: propTypes.func
+}
 
 export default Input;

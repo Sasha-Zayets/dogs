@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Clip from '../Clip/Clip';
 
@@ -26,5 +27,9 @@ const ListBreeds = ({ lists }) => (
         }
     </List>
 )
+
+ListBreeds.propTypes = {
+    lists: propTypes.array.isRequired
+}
 
 export default ListBreeds;

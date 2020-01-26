@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import propTypes from 'prop-types';
 
 const Component = styled.button`
     height: 40px;
@@ -40,5 +41,12 @@ const Button = ({ className, children, theme, onClick }) => (
         { children }
     </Component>
 )
+
+Button.propTypes = {
+    className: propTypes.string,
+    children: propTypes.any,
+    theme: propTypes.string,
+    onClick: propTypes.func
+}
 
 export default Button;

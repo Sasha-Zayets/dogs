@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
 
 const Component = styled.h2`
     font-size: 36px;
@@ -13,5 +14,9 @@ const Title = ({ children }) => (
         { children }
     </Component>
 )
+
+Title.propTypes = {
+    children: propTypes.any
+}
 
 export default Title;
