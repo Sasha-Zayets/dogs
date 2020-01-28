@@ -25,18 +25,28 @@ const Component = styled.button`
             default: 
                 return css`
                     background-color: black;
-                    color: white
+                    color: white;
                 `
         }
     }}
+
+    ${({ disabled }) => (
+        !disabled &&
+            css`
+                background-color: silver;
+                pointer-events: none;
+                color: black;
+            `
+    )}
 `;
 
 
-const Button = ({ className, children, theme, onClick }) => (
+const Button = ({ className, children, theme, onClick, disabled }) => (
     <Component 
         className={ className }
         theme={ theme }
         onClick={ onClick }
+        disabled={ disabled }
     >
         { children }
     </Component>
@@ -46,7 +56,8 @@ Button.propTypes = {
     className: propTypes.string,
     children: propTypes.any,
     theme: propTypes.string,
-    onClick: propTypes.func
+    onClick: propTypes.func,
+    disabled: propTypes.bool
 }
 
 export default Button;

@@ -50,7 +50,10 @@ class BreedsList extends React.Component {
                     value={ search } 
                     placeholder="Search"
                     onChange={ this.searchBreeds } />
-                <ListBreeds lists={ showList } />
+                {   showList.length > 0 ?
+                        <ListBreeds lists={ showList } />
+                    : <div>no results</div>
+                }
             </Fragment>
         )
     }

@@ -16,6 +16,12 @@ const NavItem  = styled(Link)`
     margin-bottom: 10px;
     color: black;
     font-size: 18px;
+    transtion-duration: .3s;
+    
+    &:hover {
+        border-color: #75b2e2;
+        color: #75b2e2;
+    }
 
     &:last-child {
         margin-bottom: 0;
@@ -26,6 +32,7 @@ const Navigation = () => (
     <Nav>
         <NavItem to="/">Home</NavItem>
         <NavItem to="/breeds-list">Breeds list</NavItem>
+        <NavItem to="/reviews">Reviews</NavItem>
     </Nav>
 )
 
