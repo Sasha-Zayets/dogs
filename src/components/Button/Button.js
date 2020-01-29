@@ -10,6 +10,7 @@ const Component = styled.button`
     display: flex;
     align-items: center;
     width: fit-content;
+    pointer-events: initial;
     transition: all .3s;
 
     &:hover {
@@ -30,8 +31,8 @@ const Component = styled.button`
         }
     }}
 
-    ${({ disabled }) => (
-        !disabled &&
+    ${({ enable }) => (
+        !enable &&
             css`
                 background-color: silver;
                 pointer-events: none;
@@ -41,12 +42,12 @@ const Component = styled.button`
 `;
 
 
-const Button = ({ className, children, theme, onClick, disabled }) => (
+const Button = ({ className, children, theme, onClick, enable = true }) => (
     <Component 
         className={ className }
         theme={ theme }
         onClick={ onClick }
-        disabled={ disabled }
+        enable={ enable }
     >
         { children }
     </Component>

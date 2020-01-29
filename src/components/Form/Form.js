@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Title from '../Title/Title';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import { connect } from 'react-redux';
+import { newReview } from '../../store/actions/actions';
 
 const Wrapper = styled.div`
     display: flex;
@@ -25,13 +27,13 @@ const TextArea = styled.textarea`
     margin: 10px 0;
 `;
 
-export default class Form extends Component {
+class Form extends Component {
     state = {
         review: '',
         reviewText: '',
         reviewValid: false,
         reviewTextValid: false,
-        formValid: false
+        formValid: false,
     }
 
     changeReview = ({ target }) => {
@@ -78,6 +80,25 @@ export default class Form extends Component {
         })
     }
 
+    sendReview = () => {
+        const today = new Date();
+
+        const review = {
+            name: this.state.review,
+            text: this.state.reviewText,
+            date: `${today.getDay()}.${today.getMonth() + 1}.${today.getFullYear()}`
+        }
+
+        this.props.test(review);
+        this.setState({
+            review: '',
+            reviewText: '',
+            reviewValid: false,
+            reviewTextValid: false,
+            formValid: false,
+        })
+    }
+
     render () {
         const { review, reviewText, formValid } = this.state;
 
@@ -94,9 +115,22 @@ export default class Form extends Component {
                         value={ reviewText }
                         onChange={ this.changeReviewText }
                     ></TextArea>
-                    <Button disabled={ formValid }>Add review</Button>
+                    <Button 
+                        enable={ formValid }
+                        onClick={ this.sendReview }
+                    >
+                        Add review
+                    </Button>
                 </Wrapper>
             </Fragment>
         )
     }
 }
+
+const mapDispachToProps = (dispatch) => ({
+    test: (data) => { 
+        dispatch(newReview(data)) 
+    },
+})
+
+export default connect(null, mapDispachToProps)(Form);

@@ -15,7 +15,15 @@ const ReviewItem = styled(Review)`
 `;
 
 const ReviewList = ({ list }) => (
-    <List><ReviewItem/></List>
+    <List>
+        { 
+            list.map((item, index) => {
+                return (
+                    <ReviewItem review={ item } key={index} />
+                )
+            })
+        }
+    </List>
 )
 
 ReviewList.propTypes = {

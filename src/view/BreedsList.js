@@ -59,5 +59,4 @@ class BreedsList extends React.Component {
     }
 }
 
-
 export default BreedsList;

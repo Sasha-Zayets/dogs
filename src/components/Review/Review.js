@@ -43,20 +43,21 @@ const Content = styled.div`
     font-size: 18px;
 `;
 
-const Review = ({ className }) => (
+const Review = ({ className, review }) => (
     <Component className={ className }>
         <Header>
-            <Title>Alex</Title>
-            <Date>20.01.2020</Date>
+            <Title>{ review.name }</Title>
+            <Date>{ review.date }</Date>
         </Header>
         <Content>
-            lorem ipsum
+            { review.text }
         </Content>
     </Component>
 )
 
 Review.propTypes = {
-    className: propTypes.string
+    className: propTypes.string,
+    review: propTypes.object
 }
 
 export default Review;
