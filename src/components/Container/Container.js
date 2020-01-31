@@ -9,14 +9,10 @@ const Content = styled.div`
     background-color: #f7f7f7;
 `;
 
-const Container = ({ children }) => (
-    <Content>
-        { children }
-    </Content>
-)
+const Container = ({ children }) => <Content>{children}</Content>;
 
 Container.propTypes = {
-    children: propTypes.element
-}
+    children: propTypes.element,
+};
 
 export default Container;

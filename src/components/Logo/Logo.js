@@ -16,8 +16,8 @@ const Image = styled.img`
 
 const Logo = () => (
     <Picture>
-        <Image src={ imageLogo } />
+        <Image src={imageLogo} />
     </Picture>
-)
+);
 
 export default Logo;

@@ -8,7 +8,7 @@ const Nav = styled.nav`
     margin: 35px 0 20px 0;
 `;
 
-const NavItem  = styled(Link)`
+const NavItem = styled(Link)`
     text-decoration: none;
     padding-bottom: 10px;
     width: 100%;
@@ -16,8 +16,8 @@ const NavItem  = styled(Link)`
     margin-bottom: 10px;
     color: black;
     font-size: 18px;
-    transtion-duration: .3s;
-    
+    transtion-duration: 0.3s;
+
     &:hover {
         border-color: #75b2e2;
         color: #75b2e2;
@@ -34,6 +34,6 @@ const Navigation = () => (
         <NavItem to="/breeds-list">Breeds list</NavItem>
         <NavItem to="/reviews">Reviews</NavItem>
     </Nav>
-)
+);
 
 export default Navigation;

@@ -1,25 +1,30 @@
 const initialState = {
-    review: [
-        {
-            id: 0,
-            name: 'Alex 2',
-            text: 'lorem text',
-            date: '29.1.2020'
-        }
-    ]
-  };
-  
+    review: [],
+    loading: false,
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-      case "ADD_REVIEW":
-        const { review } = state;
-        review.push(action.payload);
-
-        return {...state, review};
-      default:
-        return state;
+        case 'ADD_REVIEW':
+            const review = state.review;
+            const payload = action.payload;
+            return {
+                ...state,
+                review: [payload, ...review],
+            };
+        case 'GET_REVIEW':
+            return {
+                ...state,
+                review: [...action.payload],
+            };
+        case 'SET_LOADING':
+            return {
+                ...state,
+                loading: action.payload,
+            };
+        default:
+            return state;
     }
-
 };
-  
+
 export default reducer;

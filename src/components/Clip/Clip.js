@@ -16,16 +16,16 @@ const Component = styled.div`
 `;
 
 const Clip = ({ className, children }) => (
-    <Component className={ className }>{ children }</Component>
-)
+    <Component className={className}>{children}</Component>
+);
 
 Clip.propTypes = {
     className: propTypes.string,
     children: propTypes.oneOfType([
         propTypes.element.isRequired,
         propTypes.string.isRequired,
-        propTypes.number.isRequired
-    ])
-}
+        propTypes.number.isRequired,
+    ]),
+};
 
 export default Clip;

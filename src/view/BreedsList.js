@@ -12,50 +12,52 @@ class BreedsList extends React.Component {
     state = {
         search: '',
         breedsList: [],
-        showList: []
-    }
+        showList: [],
+    };
 
-    componentDidMount () {
+    componentDidMount() {
         fetch('https://dog.ceo/api/breeds/list/all')
             .then(response => response.json())
             .then(data => {
                 const breeds = Object.keys(data.message);
-              
+
                 this.setState({
                     breedsList: breeds,
-                    showList: breeds
-                })
-            })
+                    showList: breeds,
+                });
+            });
     }
 
-    searchBreeds = (event) => {
+    searchBreeds = event => {
         const listBreeds = this.state.breedsList;
         const resultSearch = listBreeds.filter(el => {
-            return el.includes(event.target.value)
-        })
-    
+            return el.includes(event.target.value);
+        });
+
         this.setState({
             search: event.target.value,
-            showList: resultSearch
-        })
-    }
+            showList: resultSearch,
+        });
+    };
 
-    render () {
+    render() {
         const { showList, search } = this.state;
 
         return (
             <Fragment>
                 <Title>All breeds list</Title>
                 <SearchField
-                    value={ search } 
+                    value={search}
                     placeholder="Search"
-                    onChange={ this.searchBreeds } />
-                {   showList.length > 0 ?
-                        <ListBreeds lists={ showList } />
-                    : <div>no results</div>
-                }
+                    onChange={this.searchBreeds}
+                />
+                {showList.length > 0 ? (
+                    <ListBreeds lists={showList} />
+                ) : (
+                    <div>no results</div>
+                )}
             </Fragment>
-        )
+        );
     }
 }
 

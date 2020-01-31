@@ -9,14 +9,10 @@ const Component = styled.h2`
     max-width: 600px;
 `;
 
-const Title = ({ children }) => (
-    <Component>
-        { children }
-    </Component>
-)
+const Title = ({ children }) => <Component>{children}</Component>;
 
 Title.propTypes = {
-    children: propTypes.any
-}
+    children: propTypes.any,
+};
 
 export default Title;

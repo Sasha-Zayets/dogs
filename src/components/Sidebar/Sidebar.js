@@ -15,6 +15,6 @@ const Sidebar = () => (
         <Logo />
         <Navigation />
     </Component>
-)
+);
 
 export default Sidebar;

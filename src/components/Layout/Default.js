@@ -16,6 +16,6 @@ const Default = () => (
             <Router />
         </Container>
     </Layout>
-)
+);
 
 export default Default;

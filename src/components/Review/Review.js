@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Component = styled.div`
     padding: 10px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, .5);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
     background-color: silver;
     border-radius: 5px;
 `;
@@ -44,20 +44,18 @@ const Content = styled.div`
 `;
 
 const Review = ({ className, review }) => (
-    <Component className={ className }>
+    <Component className={className}>
         <Header>
-            <Title>{ review.name }</Title>
-            <Date>{ review.date }</Date>
+            <Title>{review.name}</Title>
+            <Date>{review.date}</Date>
         </Header>
-        <Content>
-            { review.text }
-        </Content>
+        <Content>{review.text}</Content>
     </Component>
-)
+);
 
 Review.propTypes = {
     className: propTypes.string,
-    review: propTypes.object
-}
+    review: propTypes.object,
+};
 
 export default Review;

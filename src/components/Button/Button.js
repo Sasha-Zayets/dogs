@@ -11,54 +11,52 @@ const Component = styled.button`
     align-items: center;
     width: fit-content;
     pointer-events: initial;
-    transition: all .3s;
+    transition: all 0.3s;
 
     &:hover {
         cursor: pointer;
     }
     ${({ theme }) => {
         switch (theme) {
-            case 'primary': 
-                return css `
+            case 'primary':
+                return css`
                     background-color: #3c74ad;
                     color: white;
-                `
-            default: 
+                `;
+            default:
                 return css`
                     background-color: black;
                     color: white;
-                `
+                `;
         }
     }}
 
-    ${({ enable }) => (
+    ${({ enable }) =>
         !enable &&
-            css`
-                background-color: silver;
-                pointer-events: none;
-                color: black;
-            `
-    )}
+        css`
+            background-color: silver;
+            pointer-events: none;
+            color: black;
+        `}
 `;
 
-
 const Button = ({ className, children, theme, onClick, enable = true }) => (
-    <Component 
-        className={ className }
-        theme={ theme }
-        onClick={ onClick }
-        enable={ enable }
+    <Component
+        className={className}
+        theme={theme}
+        onClick={onClick}
+        enable={enable}
     >
-        { children }
+        {children}
     </Component>
-)
+);
 
 Button.propTypes = {
     className: propTypes.string,
     children: propTypes.any,
     theme: propTypes.string,
     onClick: propTypes.func,
-    disabled: propTypes.bool
-}
+    disabled: propTypes.bool,
+};
 
 export default Button;

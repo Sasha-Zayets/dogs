@@ -16,20 +16,18 @@ const ListItem = styled(Clip)`
 
 const ListBreeds = ({ lists }) => (
     <List>
-        {
-            lists.map((list, index) => {
-                return (
-                    <Link key={ index } to={ `/photo/${list}` }>
-                        <ListItem>{ list }</ListItem>
-                    </Link>
-                )
-            })
-        }
+        {lists.map((list, index) => {
+            return (
+                <Link key={index} to={`/photo/${list}`}>
+                    <ListItem>{list}</ListItem>
+                </Link>
+            );
+        })}
     </List>
-)
+);
 
 ListBreeds.propTypes = {
-    lists: propTypes.array.isRequired
-}
+    lists: propTypes.array.isRequired,
+};
 
 export default ListBreeds;

@@ -16,49 +16,42 @@ const ElementImage = styled(Image)`
     margin-bottom: 15px;
 `;
 
-
 class PhotoGallery extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
 
         this.name = this.props.match.params.name;
 
         this.state = {
-            arrayImage: []
-        }
+            arrayImage: [],
+        };
     }
 
-    componentDidMount () {
+    componentDidMount() {
         fetch(`https://dog.ceo/api/breed/${this.name}/images`)
             .then(response => response.json())
             .then(({ message }) => {
                 this.setState({
-                    arrayImage: message
-                })
-            })
+                    arrayImage: message,
+                });
+            });
     }
 
-    render () {
+    render() {
         const { arrayImage } = this.state;
         return (
             <Fragment>
-                <Title>Photo of the breed: &nbsp;
-                    <strong>
-                        { this.name }
-                    </strong>
+                <Title>
+                    Photo of the breed: &nbsp;
+                    <strong>{this.name}</strong>
                 </Title>
                 <Gallery>
-                    {
-                        arrayImage.map((image, index) => {
-                            return (
-                                <ElementImage source={ image } key={ index } />
-                            )
-                        })
-                    }
+                    {arrayImage.map((image, index) => {
+                        return <ElementImage source={image} key={index} />;
+                    })}
                 </Gallery>
-
             </Fragment>
-        )
+        );
     }
 }
 

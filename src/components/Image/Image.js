@@ -9,14 +9,12 @@ const Component = styled.img`
 `;
 
 const Image = ({ className, source }) => (
-    <Component 
-        className={ className } 
-        src={ source } />
-)
+    <Component className={className} src={source} />
+);
 
 Image.propTypes = {
     className: propTypes.string,
-    source: propTypes.string
-}
+    source: propTypes.string,
+};
 
 export default Image;

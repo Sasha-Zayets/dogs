@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 import Review from '../Review/Review';
@@ -15,19 +15,21 @@ const ReviewItem = styled(Review)`
 `;
 
 const ReviewList = ({ list }) => (
-    <List>
-        { 
-            list.map((item, index) => {
-                return (
-                    <ReviewItem review={ item } key={index} />
-                )
-            })
-        }
-    </List>
-)
+    <Fragment>
+        {list.length > 0 ? (
+            <List>
+                {list.map((item, index) => {
+                    return <ReviewItem review={item} key={index} />;
+                })}
+            </List>
+        ) : (
+            <h2>No reviews</h2>
+        )}
+    </Fragment>
+);
 
 ReviewList.propTypes = {
-    list: propTypes.array.isRequired
-}
+    list: propTypes.array.isRequired,
+};
 
 export default ReviewList;
