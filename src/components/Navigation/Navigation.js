@@ -30,7 +30,7 @@ const NavItem = styled(Link)`
 
 const Navigation = () => (
     <Nav>
-        <NavItem to="/">Home</NavItem>
+        <NavItem to="/dogs">Home</NavItem>
         <NavItem to="/breeds-list">Breeds list</NavItem>
         <NavItem to="/reviews">Reviews</NavItem>
     </Nav>
