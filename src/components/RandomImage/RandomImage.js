@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import propsTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Image from '../Image/Image';
 import Button from '../Button/Button';
+import { getRandomImage } from '../../store/actions/actions';
 
 const Cart = styled.div`
     max-width: 400px;
@@ -18,28 +21,35 @@ class RandomImage extends React.Component {
     };
 
     componentDidMount() {
-        this.getImage();
+        this.props.getUrlImage();
     }
 
-    getImage = () => {
-        fetch('https://dog.ceo/api/breeds/image/random')
-            .then(data => data.json())
-            .then(data => {
-                this.setState({
-                    linkImage: data.message,
-                });
-            })
-            .catch(error => console.log(error));
-    };
-
     render() {
+        const { linkImage, getUrlImage } = this.props;
         return (
             <Cart>
-                <Image source={this.state.linkImage} />
-                <Button onClick={this.getImage}>get random image</Button>
+                <Image source={linkImage} />
+                <Button onClick={() => getUrlImage()}>get random image</Button>
             </Cart>
         );
     }
 }
 
-export default RandomImage;
+RandomImage.propsTypes = {
+    linkImage: propsTypes.string,
+    getUrlImage: propsTypes.func,
+}
+
+const mapStateToProps = state => {
+    return {
+        linkImage: state.linkImage
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getUrlImage: () => dispatch(getRandomImage()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RandomImage);

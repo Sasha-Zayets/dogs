@@ -1,27 +1,45 @@
 const initialState = {
+    linkImage: '',
+    breedsList: [],
+    showList: [],
     review: [],
     loading: false,
 };
 
-const reducer = (state = initialState, action) => {
-    switch (action.type) {
+const reducer = (state = initialState, {type, payload}) => {
+    switch (type) {
         case 'ADD_REVIEW':
             const review = state.review;
-            const payload = action.payload;
             return {
                 ...state,
                 review: [payload, ...review],
-            };
+            }
         case 'GET_REVIEW':
             return {
                 ...state,
-                review: [...action.payload],
-            };
+                review: [...payload],
+            }
         case 'SET_LOADING':
             return {
                 ...state,
-                loading: action.payload,
-            };
+                loading: payload,
+            }
+        case 'SET_IMAGE':
+            return {
+                ...state,
+                linkImage: payload
+            }
+        case 'SET_BREEDS':
+            return {
+                ...state,
+                breedsList: payload,
+                showList: payload,
+            }
+        case 'SET_FILTER_SHOW_LIST':
+            return {
+                ...state,
+                showList: payload
+            }
         default:
             return state;
     }

@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import Title from '../components/Title/Title';
 import ListBreeds from '../components/ListBreeds/ListBreeds';
 import Input from '../components/Input/Input';
+import { getBreedsList, filterBreeds } from '../store/actions/actions';
 
 const SearchField = styled(Input)`
     margin-bottom: 20px;
@@ -11,37 +13,28 @@ const SearchField = styled(Input)`
 class BreedsList extends React.Component {
     state = {
         search: '',
-        breedsList: [],
-        showList: [],
     };
 
     componentDidMount() {
-        fetch('https://dog.ceo/api/breeds/list/all')
-            .then(response => response.json())
-            .then(data => {
-                const breeds = Object.keys(data.message);
-
-                this.setState({
-                    breedsList: breeds,
-                    showList: breeds,
-                });
-            });
+        this.props.getBreedsList();
     }
 
-    searchBreeds = event => {
-        const listBreeds = this.state.breedsList;
-        const resultSearch = listBreeds.filter(el => {
-            return el.includes(event.target.value);
+    searchBreeds = ({ target }) => {
+        const { breedsList, filterBreeds } = this.props;
+        const resultSearch = breedsList.filter(el => {
+            return el.includes(target.value);
         });
 
         this.setState({
-            search: event.target.value,
-            showList: resultSearch,
+            search: target.value,
         });
+
+        filterBreeds(resultSearch);
     };
 
     render() {
-        const { showList, search } = this.state;
+        const { search } = this.state;
+        const { showList } = this.props;
 
         return (
             <Fragment>
@@ -61,4 +54,14 @@ class BreedsList extends React.Component {
     }
 }
 
-export default BreedsList;
+const mapStateToProps = state => ({
+    breedsList: state.breedsList,
+    showList: state.showList,
+});
+
+const mapDispatchToProps = dispatch => ({
+    getBreedsList: () => dispatch(getBreedsList()),
+    filterBreeds: data => dispatch(filterBreeds(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BreedsList);
